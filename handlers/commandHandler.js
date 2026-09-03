@@ -3,7 +3,7 @@ const path = require("path");
 
 const commands = new Map();
 
-// Load all command files dynamically
+// Dynamic command loading
 const commandFiles = fs.readdirSync(path.join(__dirname, "../commands")).filter(file => file.endsWith(".js"));
 for (const file of commandFiles) {
 	const commandName = file.replace(".js", "");
