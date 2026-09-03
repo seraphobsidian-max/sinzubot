@@ -3,7 +3,7 @@ const Thread = require("../models/Thread");
 module.exports = async function ({ api, event }) {
 	const { threadID, body, type, logMessageType, logMessageData } = event;
 
-	// --- 1. LOCK GC NAME EVENT MONITOR ---
+	// Lock GC Name logic
 	if (type === "event" && logMessageType === "log:thread-name") {
 		try {
 			const threadData = await Thread.findOne({ threadID });
@@ -19,7 +19,7 @@ module.exports = async function ({ api, event }) {
 		}
 	}
 
-	// --- 2. AUTO REPLY FEATURE ---
+	// Auto replies
 	if (type === "message" || type === "message_reply") {
 		if (!body) return;
 		const lower = body.toLowerCase().trim();
