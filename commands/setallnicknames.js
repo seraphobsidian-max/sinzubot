@@ -17,7 +17,7 @@ module.exports = async function ({ api, event, args }) {
 		const participantIDs = info.participantIDs;
 
 		for (const userID of participantIDs) {
-			await new Promise((resolve) => setTimeout(resolve, 1200)); // Delay para maiwasan ang rate limit
+			await new Promise((resolve) => setTimeout(resolve, 1200));
 			api.changeNickname(newNickname, threadID, userID);
 		}
 
